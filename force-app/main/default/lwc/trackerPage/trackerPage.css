@@ -1,0 +1,53 @@
+.tp-tracker-container{
+    max-width: max-content;
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+    grid-gap: 1em;
+    align-items: flex-end;
+}
+
+.tp-status-list-container{
+    min-width: 440px;
+    padding: 1em;
+}
+
+.tp-status-container{
+    padding: 1em;
+    display: block;
+    border-bottom: 1px solid gainsboro;
+    background-color: white;
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+}
+
+.tp-status-container:hover{
+    background-color: rgba(0,0,0,0.2);
+}
+
+.tp-status-container:not(:first-child){
+    color: gray;
+}
+
+.tp-content-container{
+    display: flex;
+    align-items: flex-start;
+    margin: 1em;
+}
+
+.tp-map-container{
+    flex-grow: 1;
+    min-width: 360px;
+}
+
+.tp-content-container h2{
+    font-size: 1.5em;
+    color: var(--lwc-brandAccessible);
+}
+
+.tp-status-list-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5em;
+}

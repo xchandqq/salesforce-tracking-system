@@ -1,0 +1,58 @@
+<!--
+  @description       : 
+  @author            : Christian Abellanosa
+  @group             : 
+  @last modified on  : 10-15-2021
+  @last modified by  : Christian Abellanosa
+-->
+
+<!-- 
+
+    This LWC Page is necessary to display all the information necessary in the tracking system. Additionally,
+    action buttons are available to issue cases relating to the shipment, and a button to create new shipment status.
+
+    For better end-user interface, a map is provided to show the current location of the package.
+
+ -->
+
+
+<template>
+    <lightning-card title="Tracker">
+        <div if:true={shipmentFound} slot="actions">
+            <lightning-button-group>
+                <lightning-button label="Report Issue" onclick={onclickReportIssueGeneral}></lightning-button>
+                <lightning-button disabled={returnDisabled} label="Return Shipment"></lightning-button>
+                <lightning-button onclick={onclickFindNew} label="Find New"></lightning-button>
+            </lightning-button-group>
+        </div>
+        <lightning-spinner if:true={findingShipment}></lightning-spinner>
+        <div if:false={shipmentFound} class="tp-tracker-container">
+            <lightning-input type="text" onchange={onchangeTrackingCodeInput} max-length="16" label="Tracking Code" ></lightning-input>
+            <lightning-button disabled={codeLengthInsufficient} onclick={onclickFindButton} variant="brand" label="Find"></lightning-button>
+        </div>
+        <template if:true={shipmentFound}>
+            <div class="tp-content-container">
+                <div class="tp-status-list-container">
+                    <div class="tp-status-list-header">
+                        <h2>Shipment Status</h2>
+                        <lightning-button disabled={returnDisabled} onclick={onclickNewShipmentStatus} label="New"></lightning-button>
+                    </div>
+                    <div>
+                        <template for:each={shipmentStatusList} for:item="status" for:index="Id">
+                            <c-tracker-status-child 
+                                class="tp-status-container" 
+                                key={status.Id} 
+                                status={status}
+                                onselect={onselectStatus}></c-tracker-status-child>
+                        </template>
+                    </div>
+    
+                </div>
+                <div class="tp-map-container">
+                    <lightning-map center={center} map-markers={mapMarker} list-view="false" zoom-level="15"></lightning-map>
+                </div>
+            </div>
+
+        </template>
+    </lightning-card>
+</template>

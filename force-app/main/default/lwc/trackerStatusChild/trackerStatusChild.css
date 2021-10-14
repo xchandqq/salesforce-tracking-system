@@ -1,0 +1,21 @@
+.tp-status-name{
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.tp-status-date{
+    font-style: italic;
+    font-size: 0.75rem;
+}
+.tp-status-notes{
+    padding: 1em;
+    display: block;
+    font-size: 1.2em;
+}
+
+.tp-status-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}

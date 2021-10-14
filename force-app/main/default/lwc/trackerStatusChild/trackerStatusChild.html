@@ -1,0 +1,27 @@
+<!--
+  @description       : 
+  @author            : Christian Abellanosa
+  @group             : 
+  @last modified on  : 10-14-2021
+  @last modified by  : Christian Abellanosa
+-->
+<template>
+    <div onclick={onclickStatus}>
+        <div class="tp-status-header" >
+            <p class="tp-status-name">{status.Status__c}</p>
+            <lightning-formatted-date-time 
+                class="tp-status-date"
+                title="Date and time when this status was recorded" 
+                value={status.CreatedDate}
+                year="numeric"
+                month="long"
+                day="numeric"
+                weekday="long"
+                hour="numeric"
+                minute="2-digit"
+                hour12="true"
+                time-zone-name="short"></lightning-formatted-date-time>
+        </div>
+        <lightning-formatted-text if:true={hasStatusNotes} class="tp-status-notes" value={status.Notes__c}></lightning-formatted-text>
+    </div>
+</template>
